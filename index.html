@@ -8,13 +8,29 @@
 </head>
 
 <body>
-    <div class="root">
-        <h1 class="active">Weather Dashboard</h1>
-        <input class="search-results" type="text" placeholder="Search..">
-        <button class="search-button">
-            Search
-        </button>
-      </div>
+    <section class="top-banner">
+        <div class="container">
+          <h1 class="heading">Weather Dashboard</h1>
+          <form>
+            <input type="text" placeholder="Search for a city" autofocus>
+            <button type="submit">SUBMIT</button>
+            <span class="msg"></span>
+          </form>
+        </div>
+      </section>
+      <section class="ajax-section">
+        <div class="container">
+          <ul class="cities"></ul>
+        </div>
+      </section>
       
     
 </body>
+
+<!--Jquery Links-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.27/moment-timezone-with-data.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.27/moment-timezone-with-data.js"></script>
+    <script src="./script.js"
+ 
