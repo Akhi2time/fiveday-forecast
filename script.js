@@ -59,7 +59,7 @@ function displayFiveDayForecast(forecast) {
         const windSpeed = currentDay.wind.speed
         const humidity = currentDay.main.humidity
         const iconUrl = `https://openweathermap.org/img/w/${currentDay.weather[0].icon}.png`
-        const cardEl = $("<div class='card'>").addClass("pl-1 bg-primary text-light");
+        const cardEl = $("<div class='card'>").addClass("pl-1 bg-info text-light");
         const cardBlockDiv = $("<div>").attr("class", "card-block");
         const cardTitleDiv = $("<div>").attr("class", "card-block");
         const cardTextDiv = $("<div>").attr("class", "card-text");
