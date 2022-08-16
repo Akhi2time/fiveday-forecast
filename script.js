@@ -1,6 +1,6 @@
 let APIKey = "5723b0246625918900b6bc6ccce0a81d";
 let listOfSearchedCities = [];
-let searchedCities = JSON.parse(localStorage.getItem("searched-cities"));
+let searchedCities = JSON.parse(localStorage.getItem("searched-cities")) || [];
 
 // if there are searched cities, uppercase each searched city for cleanliness
 
@@ -21,7 +21,7 @@ $("#search-btn").on("click", () => {
     $("#search-input").val("");
     searchCity(cityName);
 
-    if (cityName && listOfSearchedCities[0] !== cityName) {
+  console.log(listOfSearchedCities)
         listOfSearchedCities.unshift(cityName);
         localStorage.setItem("searched-cities", JSON.stringify(listOfSearchedCities));
 
@@ -29,7 +29,7 @@ $("#search-btn").on("click", () => {
     <li>${cityName}</li>
     </a>`);
     }
-});
+);
 
 $(document).on("click", ".list-group-item", (e) => {
     clearDisplayedWeatherInfo();
@@ -52,14 +52,14 @@ function displayCurrentWeather(city, date, temp, humidity, windSpeed, weatherIco
 }
 
 function displayFiveDayForecast(forecast) {
-    for (let i=3; i < forecast.length; i+=8) {
+    for (let i = 3; i < forecast.length; i += 8) {
         const currentDay = forecast[i]
         const date = moment.unix(currentDay.dt).format("l");
         const temp = currentDay.main.temp
         const windSpeed = currentDay.wind.speed
         const humidity = currentDay.main.humidity
         const iconUrl = `https://openweathermap.org/img/w/${currentDay.weather[0].icon}.png`
-        const cardEl = $("<div class='card'>").addClass("pl-1 bg-info text-light");
+        const cardEl = $("<div class='card'>").addClass("pl-1 bg-primary text-light");
         const cardBlockDiv = $("<div>").attr("class", "card-block");
         const cardTitleDiv = $("<div>").attr("class", "card-block");
         const cardTextDiv = $("<div>").attr("class", "card-text");
@@ -112,19 +112,7 @@ function searchCity(cityName) {
                     $("#five-day-forecast-title").css("display", "block");
                     const fiveDayForecast = response.list;
                     displayFiveDayForecast(fiveDayForecast)
-                    // for (let i = 3; i < fiveDayForecast.length; i++) {
-                    //     console.log(i)
 
-                    //     const currentDay = fiveDayForecast[i]
-                    //     const date = moment.unix(currentDay.dt).format("l");
-                    //     const temp = currentDay.main.temp
-                    //     const windSpeed = currentDay.wind.speed
-                    //     const humidity = currentDay.main.humidity
-                    //     const icon = `https://openweathermap.org/img/w/${currentDay.weather[0].icon}.png`
-
-                    //     return displayFiveDayForecast(date, temp, windSpeed, humidity, icon)
-
-                    // }
                 });
         });
     //  });
